@@ -3,6 +3,7 @@ package cc.xpbootcamp.warmup.fibonacci;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PositionTest {
 
@@ -32,8 +33,18 @@ public class PositionTest {
         checkFib(12586269025L, 50);
     }
 
+    @Test
+    void should_throw_exception_when_calculate_given_position_out_of_range() {
+        assertThrows(Exception.class, () -> new Position(0).calculate());
+        assertThrows(Exception.class, () -> new Position(51).calculate());
+    }
+
     private void checkFib(long expect, long index) {
-        assertEquals(expect, new Position(index).calculate());
+        try {
+            assertEquals(expect, new Position(index).calculate());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

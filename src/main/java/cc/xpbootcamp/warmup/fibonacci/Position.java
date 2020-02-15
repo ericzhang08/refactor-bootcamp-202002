@@ -8,7 +8,11 @@ public class Position {
         this.index = index;
     }
 
-    public long calculate() {
+    public long calculate() throws Exception {
+        //这个检测的部分应该放在构造函数中还是放在这里
+        if (index < 1 || index > 50) {
+            throw new Exception("position out of range");
+        }
         long parePrevious = 1;
         long previous = 1;
         for(int i = 3; i <=index; i++ ){
