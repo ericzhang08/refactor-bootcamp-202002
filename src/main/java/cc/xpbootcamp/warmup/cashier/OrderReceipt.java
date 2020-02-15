@@ -19,17 +19,23 @@ public class OrderReceipt {
 
         output.append(printHeader());
 
-        // print date, bill no, customer name
         output.append(order.description());
 
-
         output.append(printsLineItems());
-        // prints the state tax
-        output.append("Sales Tax").append('\t').append(totalSalesTax());
 
-        // print total amount
-        output.append("Total Amount").append('\t').append(totalAmount());
+        output.append(printTotalSalesTax());
+
+        output.append(printTotalAmount());
         return output.toString();
+    }
+
+    private String printTotalAmount() {
+        return new StringBuilder().append("Total Amount").append('\t').append(totalAmount()).toString();
+    }
+
+    private String printTotalSalesTax() {
+        StringBuilder output = new StringBuilder();
+        return output.append("Sales Tax").append('\t').append(totalSalesTax()).toString();
     }
 
     private String  printsLineItems() {
