@@ -1,18 +1,18 @@
 package cc.xpbootcamp.warmup.fibonacci;
 
 public class Position {
-    private int index;
+    private long index;
 
-    public Position(int index) {
+    public Position(long index) {
 
         this.index = index;
     }
 
-    public int calculate() {
-        int parePrevious = 1;
-        int previous = 1;
+    public long calculate() {
+        long parePrevious = 1;
+        long previous = 1;
         for(int i = 3; i <=index; i++ ){
-            int temp = parePrevious + previous;
+            long temp = parePrevious + previous;
             parePrevious = previous;
             previous = temp;
         }

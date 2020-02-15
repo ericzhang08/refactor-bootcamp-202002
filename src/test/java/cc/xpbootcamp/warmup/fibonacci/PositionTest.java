@@ -27,7 +27,12 @@ public class PositionTest {
         checkFib(3, 4);
     }
 
-    private void checkFib(int expect, int index) {
+    @Test
+    void should_return_12586269025L_when_calculate_given_position_50() {
+        checkFib(12586269025L, 50);
+    }
+
+    private void checkFib(long expect, long index) {
         assertEquals(expect, new Position(index).calculate());
     }
 
