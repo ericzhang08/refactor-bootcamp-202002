@@ -22,6 +22,11 @@ public class PositionTest {
         checkFib(2, 3);
     }
 
+    @Test
+    void should_return_3_when_calculate_given_position_4() {
+        checkFib(3, 4);
+    }
+
     private void checkFib(int expect, int index) {
         assertEquals(expect, new Position(index).calculate());
     }

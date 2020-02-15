@@ -12,6 +12,13 @@ public class Position {
         if (index == 1 || index == 2) {
             return 1;
         }
-        return 2;
+        int f1 = 1;
+        int f2 = 1;
+        for(int i = 3; i <=index; i++ ){
+            int temp = f1 + f2;
+            f1 = f2;
+            f2 = temp;
+        }
+        return f2;
     }
 }
