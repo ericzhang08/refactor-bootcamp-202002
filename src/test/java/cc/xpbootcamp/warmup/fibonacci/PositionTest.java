@@ -8,11 +8,17 @@ public class PositionTest {
 
     @Test
     void should_return_1_when_calculate_given_position_1() {
-        assertEquals(1, new Position(1).calculate());
+        checkFib(1, 1);
     }
+
 
     @Test
     void should_return_1_when_calculate_given_position_2() {
-        assertEquals(1, new Position(2).calculate());
+        checkFib(1, 2);
     }
+
+    private void checkFib(int expect, int index) {
+        assertEquals(expect, new Position(index).calculate());
+    }
+
 }
