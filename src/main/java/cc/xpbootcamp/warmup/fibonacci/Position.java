@@ -9,16 +9,13 @@ public class Position {
     }
 
     public int calculate() {
-        if (index == 1 || index == 2) {
-            return 1;
-        }
-        int f1 = 1;
-        int f2 = 1;
+        int parePrevious = 1;
+        int previous = 1;
         for(int i = 3; i <=index; i++ ){
-            int temp = f1 + f2;
-            f1 = f2;
-            f2 = temp;
+            int temp = parePrevious + previous;
+            parePrevious = previous;
+            previous = temp;
         }
-        return f2;
+        return previous;
     }
 }
