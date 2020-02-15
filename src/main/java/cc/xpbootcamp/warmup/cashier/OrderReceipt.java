@@ -20,8 +20,7 @@ public class OrderReceipt {
         output.append(printHeader());
 
         // print date, bill no, customer name
-        output.append(order.getCustomerName());
-        output.append(order.getCustomerAddress());
+        output.append(order.description());
 
         // prints lineItems
         for (LineItem lineItem : order.getLineItems()) {
