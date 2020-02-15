@@ -22,7 +22,18 @@ public class OrderReceipt {
         // print date, bill no, customer name
         output.append(order.description());
 
-        // prints lineItems
+
+        output.append(printsLineItems());
+        // prints the state tax
+        output.append("Sales Tax").append('\t').append(totalSalesTax());
+
+        // print total amount
+        output.append("Total Amount").append('\t').append(totalAmount());
+        return output.toString();
+    }
+
+    private String  printsLineItems() {
+        StringBuilder output = new StringBuilder();
         for (LineItem lineItem : order.getLineItems()) {
             output.append(lineItem.getDescription());
             output.append('\t');
@@ -33,11 +44,6 @@ public class OrderReceipt {
             output.append(lineItem.totalAmount());
             output.append('\n');
         }
-        // prints the state tax
-        output.append("Sales Tax").append('\t').append(totalSalesTax());
-
-        // print total amount
-        output.append("Total Amount").append('\t').append(totalAmount());
         return output.toString();
     }
 
