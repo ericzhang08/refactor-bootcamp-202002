@@ -1,7 +1,10 @@
 package cc.xpbootcamp.warmup.cashier;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.mockito.internal.invocation.MockitoMethod;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +14,7 @@ import static org.hamcrest.Matchers.containsString;
 class OrderReceiptTest {
     @Test
     void shouldPrintCustomerInformationOnOrder() {
-        Order order = new Order("Mr X", "Chicago, 60601", new ArrayList<LineItem>());
+        Order order = new Order("Mr X", "Chicago, 60601", new ArrayList<LineItem>(), DayOfWeek.MONDAY);
         OrderReceipt receipt = new OrderReceipt(order);
 
         String output = receipt.printReceipt();
@@ -28,7 +31,7 @@ class OrderReceiptTest {
             add(new LineItem("biscuits", 5.0, 5));
             add(new LineItem("chocolate", 20.0, 1));
         }};
-        OrderReceipt receipt = new OrderReceipt(new Order(null, null, lineItems));
+        OrderReceipt receipt = new OrderReceipt(new Order(null, null, lineItems, null));
 
         String output = receipt.printReceipt();
 
@@ -37,6 +40,21 @@ class OrderReceiptTest {
         assertThat(output, containsString("chocolate\t20.0\t1\t20.0\n"));
         assertThat(output, containsString("Sales Tax\t6.5"));
         assertThat(output, containsString("Total Amount\t71.5"));
+        System.out.println(output);
+    }
+
+    @Test
+    public void shouldCountDiscountIfIsWednesday() {
+        List<LineItem> lineItems = new ArrayList<LineItem>() {{
+            add(new LineItem("milk", 10.0, 2));
+            add(new LineItem("biscuits", 5.0, 5));
+            add(new LineItem("chocolate", 20.0, 1));
+        }};
+        OrderReceipt  receipt = new OrderReceipt(new Order(null, null, lineItems,DayOfWeek.WEDNESDAY));
+        String output = receipt.printReceipt();
+        assertThat(output, containsString("Discount\t1.43"));
+        assertThat(output, containsString("Total Amount\t70.07"));
+
     }
 
 }
