@@ -11,7 +11,6 @@ import java.time.LocalDate;
  *
  */
 public class OrderReceipt {
-    public static final double DISCOUNT_RATE = 0.98;
     private Order order;
 
     public OrderReceipt(Order order) {

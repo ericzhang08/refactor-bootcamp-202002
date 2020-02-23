@@ -41,7 +41,7 @@ public class Order {
     }
 
     double totalAmountAfterDiscount() {
-        if(isWednesday()){
+        if (isWednesday()) {
             return totalAmount() - disCount();
         }
         return totalAmount();
@@ -51,7 +51,7 @@ public class Order {
         return totalAmount() * 0.02;
     }
 
-     double totalSalesTax() {
+    double totalSalesTax() {
         double result = 0;
         for (LineItem lineItem : getLineItems()) {
             result += lineItem.salesTax();
